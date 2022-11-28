@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.xgen.interview.ShoppingCartTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2022-11-27T19:12:31" hostname="DESKTOP-G2221F9" time="0.016">
+  <properties/>
+  <testcase name="testTotalWhenEmpty" classname="com.xgen.interview.ShoppingCartTest" time="0.003"/>
+  <testcase name="doesntExplodeOnMysteryItem" classname="com.xgen.interview.ShoppingCartTest" time="0.007"/>
+  <testcase name="canAddAnItem" classname="com.xgen.interview.ShoppingCartTest" time="0.001"/>
+  <testcase name="canAddMoreThanOneItem" classname="com.xgen.interview.ShoppingCartTest" time="0.001"/>
+  <testcase name="canAddDifferentItems" classname="com.xgen.interview.ShoppingCartTest" time="0.001"/>
+  <testcase name="testTotalWhenOneItem" classname="com.xgen.interview.ShoppingCartTest" time="0.0"/>
+  <testcase name="testTotalWhenTwoSame" classname="com.xgen.interview.ShoppingCartTest" time="0.001"/>
+  <testcase name="itemsAreInOrder" classname="com.xgen.interview.ShoppingCartTest" time="0.001"/>
+  <testcase name="priceFirstCartWorks" classname="com.xgen.interview.ShoppingCartTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

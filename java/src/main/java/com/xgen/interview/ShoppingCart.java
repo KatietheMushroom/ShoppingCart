@@ -11,9 +11,17 @@ import java.util.*;
 public class ShoppingCart implements IShoppingCart {
     HashMap<String, Integer> contents = new HashMap<>();
     Pricer pricer;
+    ArrayList<String> orderAdded = new ArrayList<>();
+    String receiptType;
 
     public ShoppingCart(Pricer pricer) {
         this.pricer = pricer;
+        this.receiptType = "";
+    }
+
+    public ShoppingCart(Pricer pricer, String receiptType) {
+        this.pricer = pricer;
+        this.receiptType = receiptType;
     }
 
     public void addItem(String itemType, int number) {
@@ -23,17 +31,34 @@ public class ShoppingCart implements IShoppingCart {
             int existing = contents.get(itemType);
             contents.put(itemType, existing + number);
         }
+        if(!orderAdded.contains(itemType)){
+            orderAdded.add(itemType);
+        }
     }
 
     public void printReceipt() {
-        Object[] keys = contents.keySet().toArray();
 
-        for (int i = 0; i < Array.getLength(keys) ; i++) {
-            Integer price = pricer.getPrice((String)keys[i]) * contents.get(keys[i]);
+        int total = 0;
+        
+        for(String itemType : orderAdded){
+            Integer price = pricer.getPrice(itemType) * contents.get(itemType);
             Float priceFloat = new Float(new Float(price) / 100);
             String priceString = String.format("€%.2f", priceFloat);
 
-            System.out.println(keys[i] + " - " + contents.get(keys[i]) + " - " + priceString);
+            total += price;
+
+            // A bit inefficient as it checks for each item
+            switch(receiptType){
+                case "Price First":
+                    System.out.println(priceString + " - " + itemType + " - " + contents.get(itemType));    
+                    break;
+                default:
+                    System.out.println(itemType + " - " + contents.get(itemType) + " - " + priceString);
+            }      
         }
+
+        Float totalFloat = (float) (total / 100);
+        String totalString = String.format("€%.2f", totalFloat);
+        System.out.println("Total: " + totalString);
     }
 }
